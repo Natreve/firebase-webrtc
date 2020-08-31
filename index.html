@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div style="display:flex">
+        <label for="roomID">
+            <h4>Room ID:</h4> <textarea id="roomID" name="roomID" placeholder="Room ID..."></textarea>
+        </label>
+        <label for="offerID">
+            <h4>Offer ID:</h4>
+            <textarea id="offerID" name="offerID" placeholder="Offer ID..."></textarea>
+        </label>
+    </div>
+    <div>
+        <button id="createRoom">Create Room</button>
+        <button id="joinRoom">Join Room</button>
+        <button id="leaveRoom">Leave Room</button>
+    </div>
+    <hr>
+    <div id="RTCcomm"></div>
+    Chat: <input id="chat" disabled><br>
+    <!-- Room ID: <textarea name="roomID" id="roomID"></textarea> -->
+
+    <!-- <button id="button">Offer:</button>
+    Offer: <textarea id="offer" placeholder="Paste offer here"></textarea>
+    Answer: <textarea id="answer"></textarea><br>
+    <button id="disconnect" disabled>Disconnect</button>
+    <div id="RTCcomm"></div>
+    Chat: <input id="chat"><br> -->
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+    <!-- <script src="./script.js"></script> -->
+    <script src="./app.js"></script>
+</body>
+
+</html>
