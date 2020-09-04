@@ -1,0 +1,234 @@
+@mixin size($w, $h) {
+    width: $w;
+    height: $h;
+}
+
+@mixin border-radius($radius) {
+    border-radius: $radius;
+}
+
+%center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+%clear-fix {
+    &::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
+@keyframes ball {
+    0% {
+        margin-top: 0;
+    }
+
+    20% {
+        margin-top: 3px
+    }
+
+    80% {
+        margin-top: -5px
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(.6)
+    }
+
+    30% {
+        transform: scale(1.1)
+    }
+
+    60% {
+        transform: scale(.9)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+
+body,
+html {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    background: #bdc3c7;
+    background: -webkit-linear-gradient(to right bottom, #bdc3c7, #2c3e50);
+    background: linear-gradient(to right bottom, #bdc3c7, #2c3e50);
+}
+
+body {
+    font-family: 'Microsoft JhengHei', Arial, sans-serif;
+    background: url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png');
+    letter-spacing: 1px;
+}
+
+.chat {
+    @extend %center;
+    @include size(300px, 80vh);
+    max-height: 500px;
+    @include border-radius(15px);
+    background-color: rgba(black, .5);
+    overflow: hidden;
+
+    &-title {
+        background-color: rgba(black, .3);
+        @extend %clear-fix;
+        @include size(100%, 50px);
+
+        h2 {
+            margin: 10px 0;
+            padding: 0;
+            color: #f0f0f0;
+            font-weight: normal;
+            font-size: 16px;
+            display: inline-block;
+            line-height: 30px;
+        }
+
+        .avatar {
+            float: left;
+            margin: 10px;
+            padding: 0;
+            @include size(30px, 30px);
+
+            img,
+            i {
+                // @include border-radius()(50%);
+                @include size(30px, 30px);
+            }
+        }
+
+    }
+
+    .messages {
+        @include size(100%, calc(100% - 90px));
+
+        &-content {
+            @include size(100%, 100%);
+            overflow-y: auto;
+            box-sizing: border-box;
+
+            .message {
+                max-width: calc(100% - 76px);
+                padding: 8px;
+                margin: 8px 0 8px 12px;
+                @include border-radius(5px);
+                background-color: rgba(#abc, .1);
+                color: #e3e3e3;
+                float: left;
+                font-size: 13px;
+                position: relative;
+                word-break: break-all;
+                clear: both;
+                animation: pop .3s forwards;
+
+                .timestamp {
+                    position: absolute;
+                    right: -40px;
+                    bottom: 0;
+                    font-size: 12px;
+                    color: #bababa;
+                }
+
+                &.personal {
+                    float: right;
+                    margin: 8px 12px 8px 0;
+
+                    .timestamp {
+                        right: auto;
+                        left: -40px;
+                    }
+                }
+
+                &.typing {
+                    @include size(30px, 16px);
+
+                    &::after {
+                        content: "";
+                        @include border-radius(50%);
+                        @include size(3px, 3px);
+                        background-color: white;
+                        @extend %center;
+                        transform: translate(-50%, -50%);
+                        animation: ball 1.2s infinite linear;
+                    }
+
+                    span {
+                        @include size(3px, 3px);
+                        @extend %center;
+                        transform: translate(-50%, -50%);
+
+                        &::before,
+                        &::after {
+                            content: "";
+                            @include border-radius(50%);
+                            @include size(3px, 3px);
+                            position: absolute;
+                            background-color: white;
+                            animation: ball 1.2s infinite linear;
+                        }
+
+                        &::before {
+                            left: 8px;
+                            animation-delay: .3s;
+                        }
+
+                        &::after {
+                            right: 8px;
+                            animation-delay: -.3s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .action-box {
+        background-color: rgba(black, .3);
+        @include size(100%, 40px);
+        @extend %clear-fix;
+
+        &-input,
+        &-submit {
+            box-sizing: border-box;
+            border: 0;
+            float: left;
+        }
+
+        &-input {
+            @include size(calc(100% - 60px), 20px);
+            background-color: transparent;
+            resize: none;
+            color: white;
+            margin: 10px 0;
+            padding: 0 10px;
+            line-height: 20px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            overflow: hidden;
+
+            &::-webkit-input-placeholder {
+                line-height: 20px;
+                font-size: 13px;
+            }
+        }
+
+        &-submit {
+            @include size(60px, 40px);
+            background-color: rgba(#bdc3c7, .2);
+            color: white;
+            cursor: pointer;
+        }
+    }
+}

@@ -4,12 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Real time Chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+        integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <div style="display:flex">
+    <div class="chat">
+        <div class="chat-title">
+
+            <h2>RTC APP</h2>
+            <figure class="avatar"><i class="fas fa-comment-alt"></i></figure>
+        </div>
+        <div class="messages">
+            <div class="messages-content"></div>
+        </div>
+        <div class="action-box">
+            <textarea class="action-box-input" type="text" placeholder="Type message..."></textarea>
+            <button class="action-box-submit" type="submit" onclick="insertMessage()"><i
+                    class="fa fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <!-- <div style="display:flex">
         <label for="roomID">
             <h4>Room ID:</h4> <textarea id="roomID" name="roomID" placeholder="Room ID..."></textarea>
         </label>
@@ -25,20 +43,13 @@
     </div>
     <hr>
     <div id="RTCcomm"></div>
-    Chat: <input id="chat" disabled><br>
-    <!-- Room ID: <textarea name="roomID" id="roomID"></textarea> -->
+    Chat: <input id="chat" disabled><br> -->
 
-    <!-- <button id="button">Offer:</button>
-    Offer: <textarea id="offer" placeholder="Paste offer here"></textarea>
-    Answer: <textarea id="answer"></textarea><br>
-    <button id="disconnect" disabled>Disconnect</button>
-    <div id="RTCcomm"></div>
-    Chat: <input id="chat"><br> -->
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
-    <!-- <script src="./script.js"></script> -->
-    <script src="./app.js"></script>
+    <script src="./app.js"></script> -->
+    <script src="./script.js"></script>
 </body>
 
 </html>
